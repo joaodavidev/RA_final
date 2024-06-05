@@ -21,6 +21,12 @@ def buscar_cardapio():
         print(f"{indice}: {item} no valor de ${preco}")
     return
 
+def excluir_cardapio(nome):
+    for item in cardapio:
+        if item["Nome"] == nome:
+            cardapio.remove(item)
+            print(f"O item {nome} foi removido")
+    return
 
 
 
@@ -30,7 +36,7 @@ cardapio = []
 
 while True:
     print("\nMenu da Cafeteria:")
-    print("1. Adicionar itens ao1 Cardápio")
+    print("1. Adicionar itens ao Cardápio")
     print("2. Buscar itens no Cardápio")
     print("3. Alterar itens do Cardápio")
     print("4. Excluir itens do Cardápio")
@@ -46,6 +52,9 @@ while True:
         adicionar_cardapio( nome, preco)
     elif escolha == 2:
         buscar_cardapio()
+    elif escolha == 4:
+        nome = input("Digite o item que deseja excluir: ")
+        excluir_cardapio(nome)
     elif escolha == 7:
         break
 

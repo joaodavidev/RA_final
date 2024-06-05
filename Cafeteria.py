@@ -7,12 +7,22 @@
 
 
 
-def adicionar_cardapio(cardapio,nome,preco):
+def adicionar_cardapio(nome,preco):
     cardapio_item = {"Nome": nome,
-                "Preço": preco}
+                "Preco": preco}
     cardapio.append(cardapio_item)
     print(f"O item {nome} foi adicionado no cardápio com preço R$ {preco}")
     return 
+
+def buscar_cardapio():
+    for indice, cardapio_item in enumerate(cardapio, start=1):
+        item = cardapio_item["Nome"]
+        preco = cardapio_item["Preco"]
+        print(f"{indice}: {item} no valor de ${preco}")
+    return
+
+
+
 
 cardapio = []
 
@@ -33,10 +43,17 @@ while True:
     if escolha == 1:
         nome = input("Digite o item que deseja adicionar: ")
         preco = int(input("Digite o preço do item: "))
-        adicionar_cardapio(cardapio, nome, preco)
+        adicionar_cardapio( nome, preco)
+    elif escolha == 2:
+        buscar_cardapio()
     elif escolha == 7:
         break
+
+
+    
 print("*****Programa Encerrado*****")
+
+
 
 
     

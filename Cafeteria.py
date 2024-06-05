@@ -7,21 +7,21 @@
 
 
 
-def adicionar_cardapio(nome,preco):
+def adicionar_cardapio(nome,preco):#Lyra
     cardapio_item = {"Nome": nome,
                 "Preco": preco}
     cardapio.append(cardapio_item)
     print(f"O item {nome} foi adicionado no cardápio com preço R$ {preco}")
     return 
 
-def buscar_cardapio():
+def buscar_cardapio():#Ravaneda
     for indice, cardapio_item in enumerate(cardapio, start=1):
         item = cardapio_item["Nome"]
         preco = cardapio_item["Preco"]
         print(f"{indice}: {item} no valor de ${preco}")
     return
 
-def excluir_cardapio(nome):
+def excluir_cardapio(nome):#João Davi
     for item in cardapio:
         if item["Nome"] == nome:
             cardapio.remove(item)

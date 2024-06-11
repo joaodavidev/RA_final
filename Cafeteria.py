@@ -7,12 +7,13 @@
 
 
 
-def adicionar_cardapio(nome,preco):#Lyra
-    cardapio_item = {"Nome": nome,
+def adicionar_cardapio(categoria, nome,preco):#Lyra
+   for item in cardapio:
+        if item == categoria:
+            cardapio_item = {"Nome": nome,
                 "Preco": preco}
-    cardapio.append(cardapio_item)
-    print(f"O item {nome} foi adicionado no cardápio com preço R$ {preco}")
-    return 
+            cardapio[categoria].append(cardapio_item)
+        print(f"O item {nome} foi adicionado no cardápio na categoria {categoria} com preço R$ {preco}")
 
 def buscar_cardapio():#Ravaneda
     for indice, cardapio_item in enumerate(cardapio, start=1):

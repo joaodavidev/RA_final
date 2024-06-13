@@ -7,13 +7,15 @@
 
 
 
-def adicionar_cardapio(categoria, nome,preco):#Lyra
-   for item in cardapio:
-        if item == categoria:
-            cardapio_item = {"Nome": nome,
-                "Preco": preco}
-            cardapio[categoria].append(cardapio_item)
-        print(f"O item {nome} foi adicionado no cardápio na categoria {categoria} com preço R$ {preco}")
+def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
+    cardapio_item = {"nome": nome,
+                     "preco": preco}
+    if categoria in cardapio:
+        cardapio[categoria].append(cardapio_item)
+        print(f"\nO item {nome} foi adicionado no cardápio na categoria {categoria} com preço R$ {preco}")
+    else:
+        print("\nErro: Categorias existentes: Bebidas, Entradas, Pratos Princiais e Sobremesas")
+    return
 
 def buscar_cardapio():#Ravaneda
     for indice, cardapio_item in enumerate(cardapio, start=1):
@@ -48,9 +50,10 @@ while True:
     escolha = int(input("Digite sua escolha: "))
 
     if escolha == 1:
+        categoria = input("Deseja adicionar qual categoria? ").lower()
         nome = input("Digite o item que deseja adicionar: ")
-        preco = int(input("Digite o preço do item: "))
-        adicionar_cardapio( nome, preco)
+        preco = input("Digite o preço do item: ")
+        adicionar_cardapio(cardapio, categoria, nome, preco)
     elif escolha == 2:
         buscar_cardapio()
     elif escolha == 4:

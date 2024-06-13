@@ -27,12 +27,13 @@ def buscar_cardapio():#Ravaneda
         print(f"{indice}: {item} no valor de ${preco}")
     return
 
-def excluir_cardapio(nome):#João Davi
-    for catego in cardapio:
-        for item in catego:
-            if item["Nome"] == nome:
-                cardapio[catego].remove(item)
-            print(f"O item {nome} foi removido de {catego}")
+def excluir_cardapio( categoria, nome):#João Davi
+    if categoria in cardapio:#verificar se a categoria existe
+        valores = cardapio.get(categoria)#declarar os itens da categoria dentro do valores
+        for items in valores:#analisar os itens da categoria
+            if items['nome'] == nome:#verificar o "nome" dentro do item, que é um dicionario
+                cardapio[categoria].remove(items)#remover o item inteiro
+        print(f"O item {nome} foi removido de {categoria}")#print do feedback
     return
 
 
@@ -66,8 +67,9 @@ while True:
     elif escolha == 2:
         buscar_cardapio()
     elif escolha == 4:
+        categoria = input("Digite a categoria do item que deseja excluir: ")
         nome = input("Digite o item que deseja excluir: ")
-        excluir_cardapio(nome)
+        excluir_cardapio( categoria, nome)
     elif escolha == 7:
         break
 

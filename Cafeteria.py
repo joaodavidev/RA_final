@@ -21,10 +21,18 @@ def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
 
 
 def buscar_cardapio():#Ravaneda
-    for indice, cardapio_item in enumerate(cardapio, start=1):
-        item = cardapio_item["Nome"]
-        preco = cardapio_item["Preco"]
-        print(f"{indice}: {item} no valor de ${preco}")
+    if categoria in cardapio:
+        itens = cardapio[categoria]
+        print(f"\n{categoria.upper()}")
+        if itens:
+            for indice,item in enumerate(itens, start=1):
+                nome = item["nome"]
+                preco = item["preco"]
+                print(f"{indice}. {nome} no valor de R${preco}")
+        else:
+            print("Não possui nenhum item!")
+    else:
+        print("Erro: Categoria Inexistente!")
     return
 
 def excluir_cardapio( categoria, nome):#João Davi

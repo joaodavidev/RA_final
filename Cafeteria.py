@@ -5,7 +5,6 @@
 #Gustavo -> Buscar itens no cardapio
 #Guilherme -> Listar todos os itens do cardapio e ponto extra
 
-
 def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
     cardapio_item = {"nome": nome,
                      "preco": preco}
@@ -16,9 +15,7 @@ def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
         print("\nErro: Categorias existentes: Bebidas, Entradas, Pratos Princiais e Sobremesas")
     return
 
-
-
-def buscar_cardapio():#Ravaneda
+def buscar_cardapio(cardapio, categoria):#Ravaneda
     if categoria in cardapio:
         itens = cardapio[categoria]
         print(f"\n{categoria.upper()}")
@@ -46,14 +43,13 @@ def alterar_item_cardapio(cardapio, categoria, nome_veio, nome_novo, preco_novo)
         print("\nErro: Categorias existentes: Bebidas, Entradas, Pratos Princiais e Sobremesas") #Mostra todas as categorias existentes se tiver colocado uma errada.
     return
 
-
 def excluir_cardapio( categoria, nome):#João Davi Dev
     if categoria in cardapio:#verificar se a categoria existe
         valores = cardapio.get(categoria)#declarar os itens da categoria dentro do valores
         for items in valores:#analisar os itens da categoria
             if items['nome'] == nome:#verificar o "nome" dentro do item, que é um dicionario
                 cardapio[categoria].remove(items)#remover o item inteiro
-        print(f"O item {nome} foi removido de {categoria}")#print do feedback
+        print(f"\nO item {nome} foi removido de {categoria}")#print do feedback
     return
 
 def cardapio_completo(cardapio):    #Guilherme
@@ -67,15 +63,12 @@ def cardapio_completo(cardapio):    #Guilherme
             indice_ajustado += 1 # Necessario para a contagem dos itens serem subsequentes.
     return
 
-
 cardapio = {
             "bebidas": [],
             "entradas": [],
             "pratos principais": [],
             "sobremesas": []
             }
-
-
 
 while True:
     print("\nMenu da Cafeteria:")
@@ -84,8 +77,7 @@ while True:
     print("3. Alterar itens do Cardápio")
     print("4. Excluir itens do Cardápio")
     print("5. Listar todos os itens do Cardapio")
-    print("6. Ponto Extra")
-    print("7. Encerrar Programa")
+    print("6. Encerrar Programa")
 
     escolha = int(input("Digite sua escolha: "))
 
@@ -95,15 +87,14 @@ while True:
         preco = input("Digite o preço do item: ")
         adicionar_cardapio(cardapio, categoria, nome, preco)
     elif escolha == 2:
-        buscar_cardapio()
-        
+        categoria = input("Digite a categoria que deseja visualizar: ")
+        buscar_cardapio(cardapio, categoria)
     elif escolha == 3:
         categoria = input("Digite a categoria do item que deseja alterar: ").lower()
         nome_veio = input("Digite o nome do item que deseja alterar: ").capitalize()
         nome_novo = input("Digite o novo nome do item: ")
         preco_novo = input("Digite o novo preço do item: ")
         alterar_item_cardapio(cardapio, categoria, nome_veio, nome_novo, preco_novo)
-
     elif escolha == 4:
         categoria = input("Digite a categoria do item que deseja excluir: ")
         nome = input("Digite o item que deseja excluir: ")
@@ -113,5 +104,4 @@ while True:
     elif escolha == 7:
         break
 
-    
 print("*****Programa Encerrado*****")

@@ -7,6 +7,7 @@
 
 
 
+
 def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
     cardapio_item = {"nome": nome,
                      "preco": preco}
@@ -17,6 +18,8 @@ def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
         print("\nErro: Categorias existentes: Bebidas, Entradas, Pratos Princiais e Sobremesas")
     return
 
+
+
 def buscar_cardapio():#Ravaneda
     for indice, cardapio_item in enumerate(cardapio, start=1):
         item = cardapio_item["Nome"]
@@ -25,15 +28,21 @@ def buscar_cardapio():#Ravaneda
     return
 
 def excluir_cardapio(nome):#João Davi
-    for item in cardapio:
-        if item["Nome"] == nome:
-            cardapio.remove(item)
-            print(f"O item {nome} foi removido")
+    for catego in cardapio:
+        for item in catego:
+            if item["Nome"] == nome:
+                cardapio[catego].remove(item)
+            print(f"O item {nome} foi removido de {catego}")
     return
 
 
 
-cardapio = []
+cardapio = {
+            "bebidas": [],
+            "entradas": [],
+            "pratos principais": [],
+            "sobremesas": []
+            }
 
 
 

@@ -5,9 +5,6 @@
 #Gustavo -> Buscar itens no cardapio
 #Guilherme -> Listar todos os itens do cardapio e ponto extra
 
-
-
-
 def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
     cardapio_item = {"nome": nome,
                      "preco": preco}
@@ -18,9 +15,7 @@ def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
         print("\nErro: Categorias existentes: Bebidas, Entradas, Pratos Princiais e Sobremesas")
     return
 
-
-
-def buscar_cardapio():#Ravaneda
+def buscar_cardapio(cardapio, categoria):#Ravaneda
     if categoria in cardapio:
         itens = cardapio[categoria]
         print(f"\n{categoria.upper()}")
@@ -35,7 +30,7 @@ def buscar_cardapio():#Ravaneda
         print("Erro: Categoria Inexistente!")
     return
 
-def excluir_cardapio( categoria, nome):#João Davi
+def excluir_cardapio(categoria, nome):#João Davi
     if categoria in cardapio:#verificar se a categoria existe
         valores = cardapio.get(categoria)#declarar os itens da categoria dentro do valores
         for items in valores:#analisar os itens da categoria
@@ -44,7 +39,16 @@ def excluir_cardapio( categoria, nome):#João Davi
         print(f"O item {nome} foi removido de {categoria}")#print do feedback
     return
 
-
+def cardapio_completo(cardapio):
+    print("\nCardapio Completo: ")
+    indice_ajustado = 1 # Variavel necessaria para iniciar a contagem dos indices.
+    for categoria, itens in cardapio.items(): # variaveis necessarias para iterar sobre os itens de todas as categorias.
+        for indice, item in enumerate(itens, start=indice_ajustado): # Looping usado para numerar os itens do cardapio.
+            nome = item["nome"] # Atribui a variavel "nome" com o nome do item dentro do dicionario.
+            preco = item["preco"] # Atribui a variavel "preco" com o preco do item dentro do dicionario.
+            print(f"{indice}. {nome} no valor de R$ {preco}") # Modelo em que vai aparecer os itens do dicionario.
+            indice_ajustado += 1 # Necessario para a contagem dos itens serem subsequentes.
+    return
 
 cardapio = {
             "bebidas": [],
@@ -73,23 +77,15 @@ while True:
         preco = input("Digite o preço do item: ")
         adicionar_cardapio(cardapio, categoria, nome, preco)
     elif escolha == 2:
-        buscar_cardapio()
+        categoria = input("Deseja visualizar qual categoria? ").lower()
+        buscar_cardapio(cardapio, categoria)
     elif escolha == 4:
-        categoria = input("Digite a categoria do item que deseja excluir: ")
+        categoria = input("Digite a categoria do item que deseja excluir: ").lower()
         nome = input("Digite o item que deseja excluir: ")
-        excluir_cardapio( categoria, nome)
+        excluir_cardapio(categoria, nome)
+    elif escolha == 5:
+        cardapio_completo(cardapio)
     elif escolha == 7:
         break
 
-
-    
 print("*****Programa Encerrado*****")
-
-
-
-
-    
-
-
-
-

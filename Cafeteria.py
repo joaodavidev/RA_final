@@ -50,6 +50,8 @@ def excluir_cardapio( categoria, nome):#João Davi Dev
             if items['nome'] == nome:#verificar o "nome" dentro do item, que é um dicionario
                 cardapio[categoria].remove(items)#remover o item inteiro
         print(f"\nO item {nome} foi removido de {categoria}")#print do feedback
+    else:
+        print(f"Essa categoria não está presente no cardapio...")
     return
 
 def cardapio_completo(cardapio):    #Guilherme

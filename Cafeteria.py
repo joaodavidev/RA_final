@@ -1,8 +1,8 @@
 #Cafeteria
-#Ravaneda -> Alterar itens do cardapio
+#Ravaneda -> Buscar itens no cardapio 
 #João Davi -> Excluir itens do cardapio
 #Lyra -> Adicionar itens ao cardapio
-#Gustavo -> Buscar itens no cardapio
+#Gustavo -> Alterar itens do cardapio
 #Guilherme -> Listar todos os itens do cardapio e ponto extra
 
 def adicionar_cardapio(cardapio, categoria, nome, preco):#Lyra
@@ -98,10 +98,10 @@ while True:
     elif escolha == 4:
         categoria = input("Digite a categoria do item que deseja excluir: ")
         nome = input("Digite o item que deseja excluir: ")
-        excluir_cardapio( categoria, nome)
+        excluir_cardapio(categoria, nome)
     elif escolha == 5:
         cardapio_completo(cardapio)
-    elif escolha == 7:
+    elif escolha == 6:
         break
 
 print("*****Programa Encerrado*****")
